@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
-  get 'product/index'
+  get '/', to: 'product#index'
   get 'products', to: 'product#index'
-  get 'products/new', to: 'product#new' 
+  get 'products/new', to: 'product#new', as: 'new_product'
   post '/products', to: 'product#create'
   get 'products/:id', to: 'product#show', as: 'product'
   get '/products/:id/edit', to: 'product#edit'
-  patch '/products/:id', to: 'product#update'
+  get '/products/:id/edit', to: 'products#edit', as: 'edit_product'
+  delete '/products/:id', to: 'product#destroy'
+  patch '/products/:id', to: 'product#update'  
 end
