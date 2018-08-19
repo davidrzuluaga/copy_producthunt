@@ -2,8 +2,13 @@
   <div class="row">
     <div class="col-sm-12">
       <h1>Productos</h1>
+      
         <div class="text-right">
-        <%= link_to  "Pubicar Producto", new_product_path, class:"btn btn-primary" %>
+      <% if user_signed_in? %>
+        <%= link_to  "Publicar Producto", new_product_path, class:"btn btn-primary" %>
+      <%else%>
+        <br/>
+      <%end%>  
         </div>
       <table class="table">
         <tr>
@@ -18,8 +23,10 @@
             <td><%= product.name %></td>
             <td><%= product.url %></td>
             <td><%= product.description %></td>
+          <% if user_signed_in? %>
             <td><%= link_to  "Editar", edit_product_path(product) %> </td>
             <td><%= link_to  "Eliminar", product, method: :delete, data: {confirm: "seguro?"} %> </td>
+          <%end%>  
           </tr>
         <% end %>
       </table>

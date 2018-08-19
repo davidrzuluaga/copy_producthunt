@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   get '/', to: 'product#index'
   get 'products', to: 'product#index'
   get 'products/new', to: 'product#new', as: 'new_product'
