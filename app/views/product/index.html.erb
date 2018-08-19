@@ -8,11 +8,6 @@
           <div class="product-details">
             <span class="product-title"><%= link_to product.name, product %></span>
             <span class="product-description"><%= product.description %></span>
-
-          <% if user_signed_in? %>
-            <td><%= link_to  "Editar", edit_product_path(product) %> </td>
-            <td><%= link_to  "Eliminar", product, method: :delete, data: {confirm: "seguro?"} %> </td>
-          <%end%>  
           </div>
         </div>
         <% end %>

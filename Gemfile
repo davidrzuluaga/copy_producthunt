@@ -34,6 +34,7 @@ gem 'xmlrpc'
 gem 'gravatar-ultimate'
 
 gem 'annotate'
+gem 'octicons'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
