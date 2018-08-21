@@ -6,6 +6,7 @@ class CommentsController < ApplicationController
         redirect_to product
     end
 
+<<<<<<< HEAD
     def destroy
         @comment = Product.find(params[:product_id])
         if @comment.user == current_user
@@ -15,6 +16,8 @@ class CommentsController < ApplicationController
         end    
     end
 
+=======
+>>>>>>> commenta
   private
     def comments_params
         params.require(:comment).permit(:body).merge(user: current_user)
