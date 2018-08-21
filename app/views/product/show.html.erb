@@ -1,15 +1,19 @@
 <div class="product-page">
   <header class="product-header">
-    <h1><%= @product.name %></h1>
-    <p><%= @product.description %></p>
+    <h1>
+      <%= @product.name %>
+    </h1>
+    <p>
+      <%= @product.description %>
+    </p>
     <a href="<%= @product.url %>" class="btn btn-primary btn-lg" target="_blank">¡Obtenlo!</a>
 
     <% if signed_in? && @product.user == current_user%>
-    <div class="actions">
-      <%= link_to "&#x270E;".html_safe, edit_product_path(@product) %>
-      <%= link_to "&#128465;".html_safe, @product, method: :delete, data: { confirm: "¿Estás seguro de eliminar este producto?" } %>
-    </div>
-    <%end%>
+      <div class="actions">
+        <%= link_to "&#x270E;".html_safe, edit_product_path(@product) %>
+          <%= link_to "&#128465;".html_safe, @product, method: :delete, data: { confirm: "¿Estás seguro de eliminar este producto?" } %>
+      </div>
+      <%end%>
   </header>
 
   <div class="container">
@@ -21,6 +25,31 @@
 
         <div class="comments">
           <h2>Comentarios</h2>
+
+          <% @product.comments.each do |comment| %>
+            <div class="card">
+              <h5 class="card-header">
+                <img src="<%= Gravatar.new(" #{comment.user.email} ").image_url %>" class="img-circle" />
+                <%= comment.user.email %>
+              </h5>
+              <p class="card-text">
+                <%= comment.body %>
+              </p>
+            </div>
+            <% end %>
+
+              <% if signed_in? %>
+                <%= form_for [@product, @product.comments.build] do |f| %>
+                  <div class="form-group">
+                    <%= f.text_area :body, class: "form-control", placeholder: "Agregar comentario" %>
+                  </div>
+
+                  <div class="actions text-right">
+                    <%= f.submit "Comentar", class: "btn btn-primary" %>
+                  </div>
+                  <% end %>
+                <% end %>
+
         </div>
       </div>
     </div>
