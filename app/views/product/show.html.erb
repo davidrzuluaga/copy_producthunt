@@ -31,6 +31,9 @@
               <h5 class="card-header">
                 <img src="<%= Gravatar.new(" #{comment.user.email} ").image_url %>" class="img-circle" />
                 <%= comment.user.email %>
+                <% if signed_in? && comment.user == current_user%>
+                  <!-- comment_delete.txt -->
+                <% end %>            
               </h5>
               <p class="card-text">
                 <%= comment.body %>
