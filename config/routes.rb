@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
   devise_for :users
-  root 'product#index'
 
-  resources :product do
+  root 'product#index'
+ 
+  get 'products/new', to: 'product#new', as: 'new_product'
+  post '/products', to: 'product#create'
+ 
+  resources :product, except: [:create, :new] do
     resources :comments, only: [:create]
   end
 end
