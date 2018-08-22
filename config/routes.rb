@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   post '/products', to: 'product#create'
  
   resources :product, except: [:create, :new] do
+    resource :vote, only: [:create, :destroy]
     resources :comments, only: [:create]
   end
 end
