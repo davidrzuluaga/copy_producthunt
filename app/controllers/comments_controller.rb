@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
     def create
         product = Product.find(params[:product_id])
-        binding.pry
+        
         product.comments.create(comments_params)
 
         redirect_to product

@@ -9,13 +9,11 @@
             <div class="alert alert-danger">
               <ul>
                 <% @user.errors.full_messages.each do |msg| %>
-                  <li>
-                    <%= msg %>
-                  </li>
-                  <% end %>
+                  <li><%= msg %></li>
+                <% end %>
               </ul>
             </div>
-            <% end %>
+          <% end %>
 
               <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
                 
